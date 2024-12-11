@@ -84,6 +84,8 @@ class Cartastron : AppCompatActivity() {
 
                     }else{
 
+
+
                         object : CountDownTimer(1000, 1000){
 
                             override fun onTick(millisUntilFinished: Long) {
@@ -91,16 +93,15 @@ class Cartastron : AppCompatActivity() {
                             }
 
                             override fun onFinish() {
-                                Log.v("erssssfdssgfdsgre", "fddrdrtfhgtfv")
                                 casillas[cartasIntentadas[0]] = 0
                                 casillas[cartasIntentadas[1]] = 0
+                                darVueltas(cartasIntentadas[0], cartasIntentadas[1])
                             }
 
                         }.start()
 
                         vidas--
 
-                        darVueltas(cartasIntentadas[0], cartasIntentadas[1])
 
                         cartas[cartasIntentadas[0]].isEnabled = true
                         cartas[cartasIntentadas[1]].isEnabled = true

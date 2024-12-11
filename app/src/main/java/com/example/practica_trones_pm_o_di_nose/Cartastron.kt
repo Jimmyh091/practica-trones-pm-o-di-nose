@@ -17,14 +17,14 @@ import kotlinx.coroutines.delay
 
 class Cartastron : AppCompatActivity() {
 
-    private var vidas = 3
+    private var vidas = 5
     private lateinit var textVidas : TextView
 
     private lateinit var reset : Button
     private lateinit var cartas : MutableList<ImageView>
     private lateinit var casillas : MutableList<Int>
 
-    private var parejas = mutableListOf(0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6)
+    private var parejas = mutableListOf(0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5)
 
     private var primerClick = true
 
@@ -56,8 +56,7 @@ class Cartastron : AppCompatActivity() {
             val num = it
             cartas[it].setOnClickListener{
                 casillas[num] = 2
-
-                casillas[num] = 2
+                cartas[num].isEnabled = false
 
                 when (parejas[num]) {
                     0 -> cartas[num].setImageResource(R.drawable.cartatomate)
@@ -67,8 +66,6 @@ class Cartastron : AppCompatActivity() {
                     4 -> cartas[num].setImageResource(R.drawable.cartanaranja)
                     5 -> cartas[num].setImageResource(R.drawable.cartanaranjasilla)
                 }
-
-                cartas[num].isEnabled = false
 
                 if (primerClick){
                     primerClick = false
@@ -84,8 +81,6 @@ class Cartastron : AppCompatActivity() {
 
                     }else{
 
-
-
                         object : CountDownTimer(1000, 1000){
 
                             override fun onTick(millisUntilFinished: Long) {
@@ -96,24 +91,22 @@ class Cartastron : AppCompatActivity() {
                                 casillas[cartasIntentadas[0]] = 0
                                 casillas[cartasIntentadas[1]] = 0
                                 darVueltas(cartasIntentadas[0], cartasIntentadas[1])
+                                cartas[cartasIntentadas[0]].isEnabled = true
+                                cartas[cartasIntentadas[1]].isEnabled = true
                             }
 
                         }.start()
 
                         vidas--
-
-
-                        cartas[cartasIntentadas[0]].isEnabled = true
-                        cartas[cartasIntentadas[1]].isEnabled = true
                     }
 
                 }
 
+                textVidas.text = "Vidas: $vidas"
+
                 if (comprobarFin()) {
                     ejecutarFin()
                 }
-
-                textVidas.text = "Vidas: $vidas"
             }
 
             casillas[it] = 0
@@ -150,17 +143,20 @@ class Cartastron : AppCompatActivity() {
 
     }
 
-    fun comprobarFin() : Boolean{ //??? esta to mal hecho
+    fun comprobarFin() : Boolean{
         if (vidas == 0){
+            Log.v("lkasdjfalskfj", "perder")
             textVidas.text = "Has perdido"
             return true
         }else{
             for (it in casillas){
                 if (it == 0){
+                    Log.v("lkasdjfalskfj", "nada")
                     return false
                 }
             }
         }
+        Log.v("lkasdjfalskfj", "ganar")
         textVidas.text = "Has ganado!!!!!!!!!!!!!!!"
         return true
     }

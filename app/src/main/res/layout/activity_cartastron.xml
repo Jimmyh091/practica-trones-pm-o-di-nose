@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="30dp"
         android:layout_weight="1"
-        android:text="Vidas: "
+        android:text=""
         app:layout_constraintBottom_toTopOf="@id/linearpadre"/>
 
     <LinearLayout

@@ -6,4 +6,5 @@
     <bool name="multiplicacion">false</bool>
     <integer name="minimo">0</integer>
     <integer name="maximo">10</integer>
+    <bool name="animacion">false</bool>
 </resources>

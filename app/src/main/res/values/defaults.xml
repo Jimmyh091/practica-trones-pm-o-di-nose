@@ -7,4 +7,7 @@
     <integer name="minimo">0</integer>
     <integer name="maximo">10</integer>
     <bool name="animacion">false</bool>
+
+    <integer name="aciertostotales">0</integer>
+    <integer name="fallostotales">0</integer>
 </resources>

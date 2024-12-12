@@ -79,7 +79,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cuentaactual" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/correccion"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:adjustViewBounds="true"
@@ -87,6 +87,15 @@
                 app:layout_constraintStart_toEndOf="@+id/cuentapasada"
                 app:layout_constraintTop_toTopOf="@+id/cuentapasada"
                 tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/cuentaactual"
+                app:layout_constraintStart_toEndOf="@+id/cuentaactual"
+                app:layout_constraintTop_toTopOf="@+id/cuentaactual" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -103,8 +112,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/boton2"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/boton1"
             app:layout_constraintTop_toBottomOf="@+id/boton1" />
 
         <Button
@@ -195,6 +205,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="C"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/boton3"
             app:layout_constraintStart_toStartOf="@+id/boton3"
             app:layout_constraintTop_toBottomOf="@id/boton3" />
@@ -218,6 +229,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/boton6"
             app:layout_constraintTop_toBottomOf="@id/botonCE" />
+
+        <Button
+            android:id="@+id/menos"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="-"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/boton0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/boton1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

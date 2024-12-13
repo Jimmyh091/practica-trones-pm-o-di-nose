@@ -1,8 +1,10 @@
 package com.example.practica_trones_pm_o_di_nose
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.preference.PreferenceManager
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -12,16 +14,17 @@ import com.example.practica_trones_pm_o_di_nose.databinding.ActivityCalculatronB
 class Calculatron : AppCompatActivity() {
 
     private lateinit var bind : ActivityCalculatronBinding
+    private lateinit var shared : SharedPreferences
     private lateinit var terminar : Intent
 
-    private var max : Int = resources.getInteger(R.integer.maximo)
-    private var min : Int = resources.getInteger(R.integer.minimo)
-    private var cuentaAtras : Int = resources.getInteger(R.integer.cuentaatras)
-    private var tiempo : Long = (cuentaAtras * 1000).toLong()
-    private var suma : Boolean = resources.getBoolean(R.bool.suma)
-    private var resta : Boolean = resources.getBoolean(R.bool.resta)
-    private var multiplicacion : Boolean = resources.getBoolean(R.bool.multiplicacion)
-    private var animacion : Boolean = resources.getBoolean(R.bool.animacion)
+    private var max : Int = 0
+    private var suma : Boolean = true
+    private var min : Int = 0
+    private var cuentaAtras : Int = 0
+    private var tiempo : Long = 0
+    private var resta : Boolean = true
+    private var multiplicacion : Boolean = true
+    private var animacion : Boolean = true
 
     private var aciertostotales : Int = 0
     private var fallostotales : Int = 0
@@ -44,6 +47,7 @@ class Calculatron : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        bind = ActivityCalculatronBinding.inflate(layoutInflater)
         setContentView(bind.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -51,6 +55,17 @@ class Calculatron : AppCompatActivity() {
             insets
         }
 
+        shared = PreferenceManager.getDefaultSharedPreferences(this)
+
+        suma = shared.getBoolean("suma", true)
+        max = shared.getInt("maximo", 10)
+        min = resources.getInteger(R.integer.minimo)
+        cuentaAtras = resources.getInteger(R.integer.cuentaatras)
+        tiempo = (cuentaAtras * 1000).toLong()
+        resta = resources.getBoolean(R.bool.resta)
+        multiplicacion = resources.getBoolean(R.bool.multiplicacion)
+        animacion = resources.getBoolean(R.bool.animacion)
+        
         terminar = Intent(this, ResultadosCalculatron::class.java)
 
         object : CountDownTimer(cuentaAtras * 1000L, tiempo) {

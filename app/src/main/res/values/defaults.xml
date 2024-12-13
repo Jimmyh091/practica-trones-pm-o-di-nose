@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="cuentaatras">20</integer>
+    <integer name="minimo">0</integer>
+    <integer name="maximo">10</integer>
     <bool name="suma">true</bool>
     <bool name="resta">true</bool>
     <bool name="multiplicacion">false</bool>
-    <integer name="minimo">0</integer>
-    <integer name="maximo">10</integer>
     <bool name="animacion">false</bool>
-
-    <integer name="aciertostotales">0</integer>
-    <integer name="fallostotales">0</integer>
 </resources>

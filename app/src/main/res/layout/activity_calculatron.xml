@@ -92,7 +92,7 @@
                 android:id="@+id/input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text=""
                 app:layout_constraintBottom_toBottomOf="@+id/cuentaactual"
                 app:layout_constraintStart_toEndOf="@+id/cuentaactual"
                 app:layout_constraintTop_toTopOf="@+id/cuentaactual" />

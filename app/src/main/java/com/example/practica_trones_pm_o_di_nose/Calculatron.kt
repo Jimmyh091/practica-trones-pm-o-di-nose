@@ -14,10 +14,10 @@ class Calculatron : AppCompatActivity() {
     private lateinit var bind : ActivityCalculatronBinding
     private lateinit var terminar : Intent
 
-    private var cuentaAtras : Int = resources.getInteger(R.integer.cuentaatras)
-    private var tiempo : Long = (cuentaAtras * 1000).toLong()
     private var max : Int = resources.getInteger(R.integer.maximo)
     private var min : Int = resources.getInteger(R.integer.minimo)
+    private var cuentaAtras : Int = resources.getInteger(R.integer.cuentaatras)
+    private var tiempo : Long = (cuentaAtras * 1000).toLong()
     private var suma : Boolean = resources.getBoolean(R.bool.suma)
     private var resta : Boolean = resources.getBoolean(R.bool.resta)
     private var multiplicacion : Boolean = resources.getBoolean(R.bool.multiplicacion)

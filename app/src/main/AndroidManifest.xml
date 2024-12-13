@@ -16,10 +16,10 @@
             android:name=".ResultadosCalculatron"
             android:exported="false" />
         <activity
-            android:name=".Calculatron"
+            android:name=".Cartastron"
             android:exported="false" />
         <activity
-            android:name=".Cartastron"
+            android:name=".Calculatron"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

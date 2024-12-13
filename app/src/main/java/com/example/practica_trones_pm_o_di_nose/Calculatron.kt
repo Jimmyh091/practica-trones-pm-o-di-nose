@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.preference.PreferenceManager
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,11 +18,11 @@ class Calculatron : AppCompatActivity() {
     private lateinit var shared : SharedPreferences
     private lateinit var terminar : Intent
 
-    private var max : Int = 0
-    private var suma : Boolean = true
-    private var min : Int = 0
     private var cuentaAtras : Int = 0
     private var tiempo : Long = 0
+    private var min : Int = 0
+    private var max : Int = 0
+    private var suma : Boolean = true
     private var resta : Boolean = true
     private var multiplicacion : Boolean = true
     private var animacion : Boolean = true
@@ -57,20 +58,24 @@ class Calculatron : AppCompatActivity() {
 
         shared = PreferenceManager.getDefaultSharedPreferences(this)
 
-        suma = shared.getBoolean("suma", true)
+        bind.cuentaatras.text = cuentaAtras.toString()
+
         max = shared.getInt("maximo", 10)
-        min = resources.getInteger(R.integer.minimo)
-        cuentaAtras = resources.getInteger(R.integer.cuentaatras)
+        min = shared.getInt("minimo", 0)
+        cuentaAtras = shared.getInt("cuentaatras", 20)
         tiempo = (cuentaAtras * 1000).toLong()
-        resta = resources.getBoolean(R.bool.resta)
-        multiplicacion = resources.getBoolean(R.bool.multiplicacion)
-        animacion = resources.getBoolean(R.bool.animacion)
+        suma = shared.getBoolean("suma", true)
+        resta = shared.getBoolean("resta", true)
+        multiplicacion = shared.getBoolean("multiplicacion", false)
+        animacion = shared.getBoolean("animacion", false)
         
         terminar = Intent(this, ResultadosCalculatron::class.java)
 
-        object : CountDownTimer(cuentaAtras * 1000L, tiempo) {
+        object : CountDownTimer(2000, 1000) {
             override fun onTick(p0: Long) {
                 cuentaAtras--
+                Log.v("afds", "ldsf")
+                bind.cuentaatras.text = "${bind.cuentaatras.text}a"
             }
 
             override fun onFinish() {

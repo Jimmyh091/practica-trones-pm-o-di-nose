@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/numerocuentas"
+                android:id="@+id/cuentaatras"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -36,7 +36,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/numerocuentas" />
+                app:layout_constraintTop_toBottomOf="@id/cuentaatras" />
 
             <TextView
                 android:id="@+id/fallos"
@@ -56,7 +56,7 @@
                 android:layout_marginTop="70dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/numerocuentas" />
+                app:layout_constraintTop_toBottomOf="@+id/cuentaatras" />
 
             <TextView
                 android:id="@+id/cuentaactual"

@@ -71,11 +71,17 @@ class Calculatron : AppCompatActivity() {
         
         terminar = Intent(this, ResultadosCalculatron::class.java)
 
-        object : CountDownTimer(2000, 1000) {
+        generarCuenta()
+        cuentaAString()
+        pasarOperacion()
+        generarCuenta()
+        cuentaAString()
+        actualizarDatos()
+
+        object : CountDownTimer(tiempo, 1000) {
             override fun onTick(p0: Long) {
+                bind.cuentaatras.text = "$cuentaAtras"
                 cuentaAtras--
-                Log.v("afds", "ldsf")
-                bind.cuentaatras.text = "${bind.cuentaatras.text}a"
             }
 
             override fun onFinish() {
@@ -84,7 +90,7 @@ class Calculatron : AppCompatActivity() {
                 startActivity(terminar)
             }
 
-        }
+        }.start()
 
         bind.boton0.setOnClickListener {
             bind.input.setText("${bind.input.text}0")
@@ -143,6 +149,10 @@ class Calculatron : AppCompatActivity() {
         numero1siguiente = (min..max).random()
         numero2siguiente = (min..max).random()
         operadorsiguiente = (0..2).random()
+
+        if (!suma && operadorsiguiente == 0) operadorsiguiente++
+        if (!resta && operadorsiguiente == 1) operadorsiguiente++
+        if (!multiplicacion && operadorsiguiente == 2) operadorsiguiente = 0
     }
 
     fun cuentaAString(){
@@ -157,7 +167,7 @@ class Calculatron : AppCompatActivity() {
             2 -> linea += "* "
         }
 
-        linea += "$numero2siguiente ="
+        linea += "$numero2siguiente = "
 
         cuentaSiguiente = linea
     }
@@ -165,28 +175,48 @@ class Calculatron : AppCompatActivity() {
     fun pasarTurno(){
         var correcto : Boolean = true
 
-        resultado = bind.input.text.toString().toInt()
+        if (!bind.input.text.isNullOrBlank()){
 
-        when(operador){
-            0 -> correcto = resultado == numero1 + numero2
-            1 -> correcto = resultado == numero1 - numero2
-            2 -> correcto = resultado == numero1 * numero2
+            resultado = bind.input.text.toString().toInt()
+
+            when(operador){
+                0 -> correcto = resultado == numero1 + numero2
+                1 -> correcto = resultado == numero1 - numero2
+                2 -> correcto = resultado == numero1 * numero2
+            }
+
+            if(correcto){
+                aciertos++
+                bind.correccion.setImageResource(R.drawable.correcto)
+            }else{
+                fallos++
+                bind.correccion.setImageResource(R.drawable.incorrecto)
+            }
+
+            pasarOperacion()
+            generarCuenta()
+            cuentaAString()
+            actualizarDatos()
+
+            bind.input.setText("")
         }
+    }
 
-        if(correcto){
-            aciertos++
-            bind.correccion.setImageResource(R.drawable.correcto)
-        }else{
-            fallos++
-            bind.correccion.setImageResource(R.drawable.incorrecto)
-        }
-
+    fun pasarOperacion(){
         cuentaPasada = cuentaActual
         cuentaActual = cuentaSiguiente
-        cuentaAString()
 
         numero1 = numero1siguiente
         numero2 = numero2siguiente
         operador = operadorsiguiente
+    }
+
+    fun actualizarDatos(){
+        bind.cuentapasada.setText(cuentaPasada)
+        bind.cuentaactual.setText(cuentaActual)
+        bind.cuentasiguiente.setText(cuentaSiguiente)
+
+        bind.aciertos.setText("Aciertos: $aciertos")
+        bind.fallos.setText("Fallos: $fallos")
     }
 }

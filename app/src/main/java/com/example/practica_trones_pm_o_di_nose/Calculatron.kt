@@ -148,11 +148,24 @@ class Calculatron : AppCompatActivity() {
 
         numero1siguiente = (min..max).random()
         numero2siguiente = (min..max).random()
-        operadorsiguiente = (0..2).random()
 
-        if (!suma && operadorsiguiente == 0) operadorsiguiente++
-        if (!resta && operadorsiguiente == 1) operadorsiguiente++
-        if (!multiplicacion && operadorsiguiente == 2) operadorsiguiente = 0
+        var minOperador = -1
+        var numOperadores = 0
+
+        if (suma){
+            numOperadores++
+            minOperador = 0
+        }
+        if (resta){
+            numOperadores++
+            if (minOperador == -1) minOperador = 1
+        }
+        if (multiplicacion){
+            numOperadores++
+            if (minOperador == -1) minOperador = 2
+        }
+
+        operadorsiguiente = (minOperador until numOperadores).random()
     }
 
     fun cuentaAString(){

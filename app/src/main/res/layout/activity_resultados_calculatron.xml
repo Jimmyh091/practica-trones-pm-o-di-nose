@@ -7,4 +7,86 @@
     android:layout_height="match_parent"
     tools:context=".ResultadosCalculatron">
 
+    <TextView
+        android:id="@+id/resultados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Resultados"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/aciertos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Aciertos: "
+        app:layout_constraintEnd_toStartOf="@+id/fallos"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultados" />
+
+    <TextView
+        android:id="@+id/fallos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fallos: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/aciertos"
+        app:layout_constraintTop_toTopOf="@+id/aciertos" />
+
+    <TextView
+        android:id="@+id/porcentaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:text="Porcentaje de aciertos: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aciertos" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="Total"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/porcentaje" />
+
+    <TextView
+        android:id="@+id/aciertostotales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aciertos totales: "
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/fallostotales"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total" />
+
+    <TextView
+        android:id="@+id/fallostotales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/aciertostotales"
+        app:layout_constraintTop_toTopOf="@+id/aciertostotales" />
+
+    <TextView
+        android:id="@+id/porcentajetotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Porcentaje de aciertos totales: "
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aciertostotales" />
 </androidx.constraintlayout.widget.ConstraintLayout>

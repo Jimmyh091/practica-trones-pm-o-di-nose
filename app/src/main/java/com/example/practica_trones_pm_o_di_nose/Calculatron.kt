@@ -27,6 +27,7 @@ class Calculatron : AppCompatActivity() {
     private var multiplicacion : Boolean = true
     private var animacion : Boolean = true
 
+    private lateinit var opcionesoperador : MutableList<Int>
     private var aciertostotales : Int = 0
     private var fallostotales : Int = 0
     private var aciertos : Int = 0
@@ -70,6 +71,12 @@ class Calculatron : AppCompatActivity() {
         animacion = shared.getBoolean("animacion", false)
         
         terminar = Intent(this, ResultadosCalculatron::class.java)
+
+        opcionesoperador = mutableListOf()
+
+        if (suma) opcionesoperador.add(0)
+        if (resta) opcionesoperador.add(1)
+        if (multiplicacion) opcionesoperador.add(2)
 
         generarCuenta()
         cuentaAString()
@@ -148,24 +155,7 @@ class Calculatron : AppCompatActivity() {
 
         numero1siguiente = (min..max).random()
         numero2siguiente = (min..max).random()
-
-        var minOperador = -1
-        var numOperadores = 0
-
-        if (suma){
-            numOperadores++
-            minOperador = 0
-        }
-        if (resta){
-            numOperadores++
-            if (minOperador == -1) minOperador = 1
-        }
-        if (multiplicacion){
-            numOperadores++
-            if (minOperador == -1) minOperador = 2
-        }
-
-        operadorsiguiente = (minOperador until numOperadores).random()
+        operadorsiguiente = opcionesoperador.random()
     }
 
     fun cuentaAString(){

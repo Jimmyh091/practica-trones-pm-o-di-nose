@@ -1,5 +1,6 @@
 package com.example.practica_trones_pm_o_di_nose
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -14,11 +15,11 @@ class ResultadosCalculatron : AppCompatActivity() {
 
     private var aciertos : Int = 0
     private var fallos : Int = 0
-    private var porcentaje : Float = 0f
+    private var porcentaje : Int = 0
 
     private var aciertostotales : Int = 0
     private var fallostotales : Int = 0
-    private var porcentajetotal : Float = 0f
+    private var porcentajetotal : Int = 0
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +31,19 @@ class ResultadosCalculatron : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        actualizar()
+
+        bind.volver.setOnClickListener {
+            var volverintent = Intent(this, Menu::class.java)
+            startActivity(volverintent)
+        }
+        bind.jugar.setOnClickListener {
+            var jugarintent = Intent(this, Calculatron::class.java)
+            startActivity(jugarintent)
+        }
     }
     override fun onResume() {
         super.onResume()
+        recopilarDatos()
         actualizar()
     }
 
@@ -41,20 +51,20 @@ class ResultadosCalculatron : AppCompatActivity() {
         aciertos = intent.getIntExtra("aciertos", 0)
         fallos = intent.getIntExtra("fallos", 0)
 
-        porcentaje = ((aciertos * aciertos + fallos) / 100).toFloat()
+        porcentaje = (aciertos + fallos) / (aciertos * 100)
 
         aciertostotales += aciertos
         fallostotales += fallos
 
-        porcentajetotal = ((aciertostotales * aciertostotales + fallostotales) / 100).toFloat()
+        porcentajetotal = (aciertostotales + fallostotales) / (aciertostotales * 100)
     }
 
     fun actualizar(){
         bind.aciertos.setText("Aciertos: $aciertos")
         bind.fallos.setText("Fallos: $fallos")
-        bind.porcentaje.setText("Porcentaje: $porcentaje")
-        bind.aciertostotales.setText("Aciertos: $aciertostotales")
-        bind.fallostotales.setText("Aciertos: $fallos")
-        bind.porcentajetotal.setText("Aciertos: $porcentajetotal")
+        bind.porcentaje.setText("Porcentaje: $porcentaje%")
+        bind.aciertostotales.setText("Aciertos totales: $aciertostotales")
+        bind.fallostotales.setText("Fallos totales: $fallostotales")
+        bind.porcentajetotal.setText("Porcentaje total: $porcentajetotal%")
     }
 }

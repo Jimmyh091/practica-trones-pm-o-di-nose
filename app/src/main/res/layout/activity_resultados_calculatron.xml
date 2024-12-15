@@ -63,8 +63,8 @@
         android:id="@+id/aciertostotales"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aciertos totales: "
         android:layout_marginTop="30dp"
+        android:text="Aciertos totales: "
         app:layout_constraintEnd_toStartOf="@+id/fallostotales"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
         android:id="@+id/fallostotales"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Fallos totales: "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/aciertostotales"
@@ -84,9 +84,31 @@
         android:id="@+id/porcentajetotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Porcentaje de aciertos totales: "
         android:layout_marginTop="10dp"
+        android:text="Porcentaje de aciertos totales: "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aciertostotales" />
+
+    <Button
+        android:id="@+id/volver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:text="Volver al menú"
+        app:layout_constraintEnd_toStartOf="@+id/jugar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/porcentajetotal" />
+
+    <Button
+        android:id="@+id/jugar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jugar de nuevo"
+        app:layout_constraintBottom_toBottomOf="@+id/volver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/volver"
+        app:layout_constraintTop_toTopOf="@+id/volver" />
 </androidx.constraintlayout.widget.ConstraintLayout>

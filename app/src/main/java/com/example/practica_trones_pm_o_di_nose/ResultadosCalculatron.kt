@@ -32,6 +32,14 @@ class ResultadosCalculatron : AppCompatActivity() {
             insets
         }
 
+        aciertos = 0
+        fallos = 0
+        porcentaje = 0
+
+        aciertostotales = 0
+        fallostotales = 0
+        porcentajetotal = 0
+
         bind.volver.setOnClickListener {
             var volverintent = Intent(this, Menu::class.java)
             startActivity(volverintent)
@@ -51,12 +59,12 @@ class ResultadosCalculatron : AppCompatActivity() {
         aciertos = intent.getIntExtra("aciertos", 0)
         fallos = intent.getIntExtra("fallos", 0)
 
-        porcentaje = (aciertos + fallos) / (aciertos * 100)
+        porcentaje = (aciertos * 100) / (aciertos + fallos)
 
         aciertostotales += aciertos
         fallostotales += fallos
 
-        porcentajetotal = (aciertostotales + fallostotales) / (aciertostotales * 100)
+        porcentajetotal = (aciertostotales * 100) / (aciertostotales + fallostotales)
     }
 
     fun actualizar(){

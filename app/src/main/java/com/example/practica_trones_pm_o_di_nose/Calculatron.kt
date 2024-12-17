@@ -138,13 +138,15 @@ class Calculatron : AppCompatActivity() {
             var textoAux = ""
 
             for (it in 0 until texto.length - 1){
-                textoAux += it
+                textoAux += texto[it]
             }
 
             bind.input.text = textoAux
         }
         bind.menos.setOnClickListener {
-            bind.input.setText("${bind.input.text}-")
+            if (bind.input.text[0] != '-'){
+                bind.input.setText("-${bind.input.text}")
+            }
         }
         bind.botonIgual.setOnClickListener {
             pasarTurno()

@@ -33,5 +33,10 @@ class Menu : AppCompatActivity() {
             val intent = Intent(this, Calculatron::class.java)
             startActivity(intent)
         }
+
+        bind.ajustes.setOnClickListener {
+            val intent = Intent(this, Configuracion::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -57,7 +57,7 @@ class Calculatron : AppCompatActivity() {
             insets
         }
 
-        shared = PreferenceManager.getDefaultSharedPreferences(this)
+        shared = getSharedPreferences("data", MODE_PRIVATE)
 
         bind.cuentaatras.text = cuentaAtras.toString()
 

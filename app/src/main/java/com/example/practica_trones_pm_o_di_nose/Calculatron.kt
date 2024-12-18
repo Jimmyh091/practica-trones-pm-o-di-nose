@@ -142,8 +142,10 @@ class Calculatron : AppCompatActivity() {
             bind.input.text = textoAux
         }
         bind.menos.setOnClickListener {
-            if (bind.input.text[0] != '-'){
-                bind.input.setText("-${bind.input.text}")
+            if (!bind.input.text.isNullOrBlank()){
+                if (bind.input.text[0] != '-'){
+                    bind.input.setText("-${bind.input.text}")
+                }
             }
         }
         bind.botonIgual.setOnClickListener {

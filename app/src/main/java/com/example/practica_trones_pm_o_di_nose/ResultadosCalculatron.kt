@@ -1,6 +1,7 @@
 package com.example.practica_trones_pm_o_di_nose
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,16 +10,18 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.practica_trones_pm_o_di_nose.databinding.ActivityCalculatronBinding
 import com.example.practica_trones_pm_o_di_nose.databinding.ActivityResultadosCalculatronBinding
 
+private var aciertostotales : Int = 0
+private var fallostotales : Int = 0
+
 class ResultadosCalculatron : AppCompatActivity() {
 
     private lateinit var bind : ActivityResultadosCalculatronBinding
+    private lateinit var shared : SharedPreferences
 
     private var aciertos : Int = 0
     private var fallos : Int = 0
     private var porcentaje : Int = 0
 
-    private var aciertostotales : Int = 0
-    private var fallostotales : Int = 0
     private var porcentajetotal : Int = 0
     
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,12 +35,18 @@ class ResultadosCalculatron : AppCompatActivity() {
             insets
         }
 
+        shared = getSharedPreferences("ajustes", MODE_PRIVATE)
+
+        with (shared.edit()){
+            putInt("aciertostotales", 0)
+            putInt("fallostotales", 0)
+            apply()
+        }
+
         aciertos = 0
         fallos = 0
         porcentaje = 0
 
-        aciertostotales = 0
-        fallostotales = 0
         porcentajetotal = 0
 
         bind.volver.setOnClickListener {
@@ -61,10 +70,21 @@ class ResultadosCalculatron : AppCompatActivity() {
 
         porcentaje = if ((aciertos + fallos) == 0) 0 else (aciertos * 100) / (aciertos + fallos)
 
+        /*aciertostotales = shared.getInt("aciertostotales", 0)
+        fallostotales = shared.getInt("fallostotales", 0)*/
+
+
         aciertostotales += aciertos
         fallostotales += fallos
 
+        /*with(shared.edit()){
+            putInt("aciertostotales", aciertostotales)
+            putInt("fallostotales", fallostotales)
+            apply()
+        }*/
+
         porcentajetotal = if ((aciertostotales + fallostotales) == 0) 0 else (aciertostotales * 100) / (aciertostotales + fallostotales)
+
     }
 
     fun actualizar(){

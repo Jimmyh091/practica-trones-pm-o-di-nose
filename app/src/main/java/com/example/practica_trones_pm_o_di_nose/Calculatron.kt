@@ -55,12 +55,12 @@ class Calculatron : AppCompatActivity() {
             insets
         }
 
-        shared = getSharedPreferences("data", MODE_PRIVATE)
+        shared = getSharedPreferences("ajustes", MODE_PRIVATE)
 
         bind.cuentaatras.text = cuentaAtras.toString()
 
-        max = shared.getInt("maximo", 10)
         min = shared.getInt("minimo", 0)
+        max = shared.getInt("maximo", 10)
         cuentaAtras = shared.getInt("cuentaatras", 20)
         tiempo = (cuentaAtras * 1000).toLong()
         suma = shared.getBoolean("suma", true)

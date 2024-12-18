@@ -3,6 +3,7 @@ package com.example.practica_trones_pm_o_di_nose
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -25,7 +26,7 @@ class Configuracion : AppCompatActivity() {
             insets
         }
 
-        shared = getSharedPreferences("datos", MODE_PRIVATE)
+        shared = getSharedPreferences("ajustes", MODE_PRIVATE)
 
         bind.guardar.setOnClickListener {
 
@@ -50,8 +51,10 @@ class Configuracion : AppCompatActivity() {
             putBoolean("suma", bind.suma.isChecked)
             putBoolean("resta", bind.resta.isChecked)
             putBoolean("multiplicacion", bind.multiplicacion.isChecked)
-//            putBoolean("animacion", bind.spinner.)
+            //putBoolean("animacion", bind.spinner.isEnabled)
             apply()
         }
+
+        Log.v("shared", "Guardado minimo ${shared.getInt("minimo", 0)}}")
     }
 }

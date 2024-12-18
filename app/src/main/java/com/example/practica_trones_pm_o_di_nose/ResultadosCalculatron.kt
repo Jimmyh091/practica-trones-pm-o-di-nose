@@ -59,12 +59,12 @@ class ResultadosCalculatron : AppCompatActivity() {
         aciertos = intent.getIntExtra("aciertos", 0)
         fallos = intent.getIntExtra("fallos", 0)
 
-        porcentaje = (aciertos * 100) / (aciertos + fallos)
+        porcentaje = if ((aciertos + fallos) == 0) 0 else (aciertos * 100) / (aciertos + fallos)
 
         aciertostotales += aciertos
         fallostotales += fallos
 
-        porcentajetotal = (aciertostotales * 100) / (aciertostotales + fallostotales)
+        porcentajetotal = if ((aciertostotales + fallostotales) == 0) 0 else (aciertostotales * 100) / (aciertostotales + fallostotales)
     }
 
     fun actualizar(){

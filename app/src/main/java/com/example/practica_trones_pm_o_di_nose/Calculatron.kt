@@ -28,8 +28,6 @@ class Calculatron : AppCompatActivity() {
     private var animacion : Boolean = true
 
     private lateinit var opcionesoperador : MutableList<Int>
-    private var aciertostotales : Int = 0
-    private var fallostotales : Int = 0
     private var aciertos : Int = 0
     private var fallos : Int = 0
 

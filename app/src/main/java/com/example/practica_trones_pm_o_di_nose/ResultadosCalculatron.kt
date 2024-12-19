@@ -70,18 +70,8 @@ class ResultadosCalculatron : AppCompatActivity() {
 
         porcentaje = if ((aciertos + fallos) == 0) 0 else (aciertos * 100) / (aciertos + fallos)
 
-        /*aciertostotales = shared.getInt("aciertostotales", 0)
-        fallostotales = shared.getInt("fallostotales", 0)*/
-
-
         aciertostotales += aciertos
         fallostotales += fallos
-
-        /*with(shared.edit()){
-            putInt("aciertostotales", aciertostotales)
-            putInt("fallostotales", fallostotales)
-            apply()
-        }*/
 
         porcentajetotal = if ((aciertostotales + fallostotales) == 0) 0 else (aciertostotales * 100) / (aciertostotales + fallostotales)
 

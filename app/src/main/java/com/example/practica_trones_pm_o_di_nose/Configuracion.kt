@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -28,6 +29,9 @@ class Configuracion : AppCompatActivity() {
 
         shared = getSharedPreferences("ajustes", MODE_PRIVATE)
 
+        val adaptador = ArrayAdapter(this, android.R.layout.simple_spinner_item, resources.getStringArray(R.array.opciones))
+        bind.spinner.adapter = adaptador
+
         bind.guardar.setOnClickListener {
 
             var min = bind.tietmin.text.toString().toInt() >= 0
@@ -51,7 +55,8 @@ class Configuracion : AppCompatActivity() {
             putBoolean("suma", bind.suma.isChecked)
             putBoolean("resta", bind.resta.isChecked)
             putBoolean("multiplicacion", bind.multiplicacion.isChecked)
-            //putBoolean("animacion", bind.spinner.isEnabled)
+            putString("animacion", bind.spinner.selectedItem.toString())
+            Log.v("shared", "Guardado animacion ${bind.spinner.selectedItem.toString().lowercase()}")
             apply()
         }
 

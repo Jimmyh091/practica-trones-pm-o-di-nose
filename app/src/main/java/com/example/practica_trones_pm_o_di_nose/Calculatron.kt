@@ -25,7 +25,7 @@ class Calculatron : AppCompatActivity() {
     private var suma : Boolean = true
     private var resta : Boolean = true
     private var multiplicacion : Boolean = true
-    private var animacion : Boolean = true
+    private var animacion : String = ""
 
     private lateinit var opcionesoperador : MutableList<Int>
     private var aciertos : Int = 0
@@ -66,7 +66,7 @@ class Calculatron : AppCompatActivity() {
         suma = shared.getBoolean("suma", true)
         resta = shared.getBoolean("resta", true)
         multiplicacion = shared.getBoolean("multiplicacion", false)
-        animacion = shared.getBoolean("animacion", false)
+        animacion = shared.getString("animacion", "Sin animacion")!!
         
         terminar = Intent(this, ResultadosCalculatron::class.java)
 
@@ -79,6 +79,7 @@ class Calculatron : AppCompatActivity() {
         generarCuenta()
         cuentaAString()
         pasarOperacion()
+
         generarCuenta()
         cuentaAString()
         actualizarDatos()
